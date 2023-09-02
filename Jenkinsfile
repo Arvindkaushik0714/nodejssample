@@ -1,10 +1,6 @@
 pipeline {
     agent any
     //tools {nodejs "node"}
-    environment {
-        DOCKERHUB_CREDENTIALS=credentials('dockerhub')
-        IMAGE_NAME = 'arvindkaushik/myapp:1.0'
-    }
 
     stages {
         
