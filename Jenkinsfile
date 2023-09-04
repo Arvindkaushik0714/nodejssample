@@ -1,7 +1,9 @@
 pipeline {
     agent any
     //tools {nodejs "node"}
-
+  environment {     
+    DOCKERHUB_CREDENTIALS= credentials('docker-hub')     
+}
     stages {
         
         // stage("Build Docker Image") {
@@ -11,12 +13,12 @@ pipeline {
                 
         //     }
         // }
-        // stage("Login to Docker") {
-        //     steps {
-        //         echo 'Logging to DockerHub'
-        //         sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-        //     }
-        // }
+      stage('Login to Docker Hub') {      	
+           steps{                       	
+	       sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'                		
+	       echo 'Login Completed'      
+               }           
+           } 
 
         // stage("Push to DockerHub") {
         //     steps {
