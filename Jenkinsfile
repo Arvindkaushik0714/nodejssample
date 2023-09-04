@@ -6,13 +6,12 @@ pipeline {
 }
     stages {
         
-        // stage("Build Docker Image") {
-        //     steps {
-        //        echo "building the application :  ${IMAGE_NAME}"
-        //         sh "docker build -t ${IMAGE_NAME} ."
-                
-        //     }
-        // }
+        stage('Build Docker Image') {  
+       steps{                     
+	sh 'docker build -t arvindkaushik/samplenode:1.0 .'     
+	echo 'Build Image Completed'                
+    }           
+} 
       stage('Login to Docker Hub') {      	
            steps{                       	
 	       sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'                		
@@ -20,12 +19,12 @@ pipeline {
                }           
            } 
 
-        // stage("Push to DockerHub") {
-        //     steps {
-        //         echo 'Push to DockerHub'
-        //         sh "docker push ${IMAGE_NAME}"
-        //     }
-        // }
+      stage('Push Image to Docker Hub') {         
+         steps{                            
+         sh 'sudo docker push arvindkaushik/samplenode:1.0'           
+         echo 'Push Image Completed'       
+           }            
+          }
         stage("Deploying to Test Server"){
             steps{
                 script{
