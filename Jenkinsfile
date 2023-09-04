@@ -2,13 +2,14 @@ pipeline {
     agent any
     //tools {nodejs "node"}
   environment {     
-    DOCKERHUB_CREDENTIALS= credentials('docker-hub')     
+    DOCKERHUB_CREDENTIALS= credentials('docker-hub')
+    IMAGE_NAME = 'arvindkaushik/samplenode:1.0'
 }
     stages {
         
         stage('Build Docker Image') {  
        steps{                     
-	sh 'docker build -t arvindkaushik/samplenode:1.0 .'     
+	sh 'docker build -t ${IMAGE_NAME} .'     
 	echo 'Build Image Completed'                
     }           
 } 
@@ -21,7 +22,7 @@ pipeline {
 
       stage('Push Image to Docker Hub') {         
          steps{                            
-         sh 'sudo docker push arvindkaushik/samplenode:1.0'           
+         sh 'docker push ${IMAGE_NAME}'           
          echo 'Push Image Completed'       
            }            
           }
