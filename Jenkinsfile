@@ -11,19 +11,19 @@ pipeline {
                 
         //     }
         // }
-        stage("Login to Docker") {
-            steps {
-                echo 'Logging to DockerHub'
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-            }
-        }
+        // stage("Login to Docker") {
+        //     steps {
+        //         echo 'Logging to DockerHub'
+        //         sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+        //     }
+        // }
 
-        stage("Push to DockerHub") {
-            steps {
-                echo 'Push to DockerHub'
-                sh "docker push ${IMAGE_NAME}"
-            }
-        }
+        // stage("Push to DockerHub") {
+        //     steps {
+        //         echo 'Push to DockerHub'
+        //         sh "docker push ${IMAGE_NAME}"
+        //     }
+        // }
         stage("Deploying to Test Server"){
             steps{
                 script{
