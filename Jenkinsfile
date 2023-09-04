@@ -4,13 +4,13 @@ pipeline {
 
     stages {
         
-        stage("Build Docker Image") {
-            steps {
-                echo "building the application :  ${IMAGE_NAME}"
-                sh "docker build -t ${IMAGE_NAME} ."
+        // stage("Build Docker Image") {
+        //     steps {
+        //        echo "building the application :  ${IMAGE_NAME}"
+        //         sh "docker build -t ${IMAGE_NAME} ."
                 
-            }
-        }
+        //     }
+        // }
         stage("Login to Docker") {
             steps {
                 echo 'Logging to DockerHub'
