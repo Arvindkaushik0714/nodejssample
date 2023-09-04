@@ -5,14 +5,14 @@ pipeline {
     DOCKERHUB_CREDENTIALS= credentials('docker-hub')
     IMAGE_NAME = 'arvindkaushik/samplenode:1.0'
 }
- //    stages {
+    stages {
         
- //        stage('Build Docker Image') {  
- //       steps{                     
-	// sh 'docker build -t ${IMAGE_NAME} .'     
-	// echo 'Build Image Completed'                
- //    }           
-} 
+        stage('Build Docker Image') {  
+       steps{                     
+	//sh 'docker build -t ${IMAGE_NAME} .'     
+	echo 'Build Image Completed'                
+    }           
+    } 
       stage('Login to Docker Hub') {      	
            steps{                       	
 	       sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'                		
