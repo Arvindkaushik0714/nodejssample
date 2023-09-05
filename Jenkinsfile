@@ -30,14 +30,14 @@ pipeline {
             steps{
                 script{
                     echo "Test Server is working."
-                    //def shellCmd = "bash ./serverCmd.sh ${IMAGE_NAME}"
+                    def shellCmd = "bash ./serverCmd.sh ${IMAGE_NAME}"
             
                     //sshagent(['linode-blasterbk']) {
                         // when you use variable in ssh, then use double quote. If you're using single quote, then it will not work.
-                       // sh 'scp serverCmd.sh blasterbk@170.187.251.224:/home/blasterbk'
-                       // sh 'scp docker-compose.yaml blasterbk@170.187.251.224:/home/blasterbk'
-                       // sh 'scp .env blasterbk@170.187.251.224:/home/blasterbk'
-                        //sh "ssh -o StrictHostKeyChecking=no blasterbk@170.187.251.224 ${shellCmd}"
+                        sh 'scp serverCmd.sh root@172.105.52.152:/home/arvind'
+                        sh 'scp docker-compose.yaml root@172.105.52.152:/home/arvind'
+                        sh 'scp .env root@172.105.52.152:/home/arvind'
+                        sh "ssh -o StrictHostKeyChecking=no root@172.105.52.152 ${shellCmd}"
                     }
                 }
             }
