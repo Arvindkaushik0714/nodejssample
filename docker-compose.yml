@@ -5,7 +5,7 @@ services:
     container_name: environment
     build:
       context: .
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
     ports:
       - 3005:3005
     stdin_open: true
