@@ -33,6 +33,7 @@ pipeline {
                     def shellCmd = "bash ./serverCmd.sh ${IMAGE_NAME}"
             
                     sshagent(['linode-arvind']) {
+                    
                         // when you use variable in ssh, then use double quote. If you're using single quote, then it will not work.
                         //sh 'scp serverCmd.sh root@172.105.52.152:/home/arvind'
                         sh 'scp docker-compose.yml root@172.105.52.152:/home/arvind'
