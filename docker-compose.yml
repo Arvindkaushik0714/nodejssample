@@ -1,14 +1,21 @@
+# version: '3.7'
+
+# services:
+#   environment:
+#     container_name: environment
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     ports:
+#       - 3005:3005
+#     stdin_open: true
+#     environment:
+#       - CHOKIDAR_USEPOLLING=true
+#     command: node app.js
 version: '3.7'
 
 services:
-  environment:
-    container_name: environment
-    build:
-      context: .
-      dockerfile: Dockerfile
+  web:
+    image: arvindkaushik/samplenode:1.0
     ports:
-      - 3005:3005
-    stdin_open: true
-    environment:
-      - CHOKIDAR_USEPOLLING=true
-    command: node app.js
+      - "3005:3005"
